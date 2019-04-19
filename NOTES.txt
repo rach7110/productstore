@@ -1,0 +1,30 @@
+NOTES:
+- The application should be expandable (used for than the two sales channels in code challenge).  Be prepared to discuss your architecture with us in regards to easily supporting the addition of more sales channels and integrations.
+
+- External API's:
+    - Shopify
+    - Vend
+
+- API data:
+    - Product Name
+    - SKU (unique ID)
+    - Quantity
+    - Price
+
+TODO:
+X Create Account in Shopify
+X Create products in Shopify
+X Create Account in Vend
+X Create products in Vend
+(1 hour to read instructions, outline plan, and create accoutns with products)
+
+
+The following are our suggested endpoints:
+_ GET /api/products - Returns all Stitch Lite products.
+_ GET /api/products/[productid] - Returns the specified Stitch Lite product
+_ POST /api/sync - Syncs all sales channels to pull in product updates to StitchLite.
+
+_ Design Database
+
+_ Create a job that pull the product data from APIs and updates StichLite database:
+    - change to product name, sku, Quantity, price
