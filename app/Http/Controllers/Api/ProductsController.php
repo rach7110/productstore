@@ -15,9 +15,9 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Products::all();
+        $products = Product::all();
 
-        return $products->json();
+        return response()->json($products);
     }
 
     /**
@@ -30,7 +30,7 @@ class ProductsController extends Controller
     {
         $product = Product::findOrFail($id);
 
-        return $product->json();
+        return response()->json($product);
     }
 
 }
