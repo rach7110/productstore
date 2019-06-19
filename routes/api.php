@@ -19,4 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('products', 'ProductsController@index');
 Route::get('products/{product}', 'ProductsController@show');
-Route::post('sync', 'ProductsController@sync');
+Route::get('sync', 'ProductsController@sync');

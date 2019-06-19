@@ -8,7 +8,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ProductsTest extends TestCase
 {
-    // use RefreshDatabase;
+    use RefreshDatabase;
     /**
      * A basic functional test example.
      *
@@ -16,9 +16,10 @@ class ProductsTest extends TestCase
      */
     public function testReturnsProductsInJsonFormat()
     {
-        factory(Product::class, 4)->create();
-        $product1 = Product::findOrFail(1);
-        $product2 = Product::findOrFail(2);
+        factory(Product::class, 2)->create();
+        // $product1 = Product::findOrFail(1);
+        $product1 = Product::first();
+        $product2 = Product::latest()->first();
 
         $response = $this->json('GET', 'api/products');
         $response
@@ -28,13 +29,13 @@ class ProductsTest extends TestCase
                 'name'      => $product1->name,
                 'sku'       => $product1->sku,
                 'quantity'  => $product1->quantity,
-                'price'     => $product1->price
+                'price'     => $product1->price,
                 ],
                 [
                 'name'      => $product2->name,
                 'sku'       => $product2->sku,
                 'quantity'  => $product2->quantity,
-                'price'     => $product2->price
+                'price'     => $product2->price,
                 ]
             ]);
     }
@@ -54,4 +55,11 @@ class ProductsTest extends TestCase
                 'price'     => $product->price
             ]);
     }
+
+    public function testSyncsProducts()
+    {
+        $response = $this->json('GET', 'api/sync');
+
+    }
+
 }

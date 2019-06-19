@@ -57,8 +57,11 @@ class ProductsController extends Controller
      */
     public function sync()
     {
-        $vendProducts = collect(json_decode($this->vendSrv->call(), true));
+        // dd($this->shopifySvc->call());
+
         $shopifyProducts = collect(json_decode($this->shopifySvc->call(), true));
+
+        $vendProducts = collect(json_decode($this->vendSrv->call(), true));
 
         $products = $vendProducts
             ->merge($shopifyProducts)

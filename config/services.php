@@ -44,4 +44,14 @@ return [
         ],
     ],
 
+    'vend' => [
+        'client_id' => env('VEND_CLIENT_ID'),
+    ],
+
+    'shopify' => [
+        'store'  => env('SHOPIFY_STORE'),
+        'app_key'  => env('SHOPIFY_APP_KEY'),
+        'app_password'  => env('SHOPIFY_APP_PASSWORD'),
+    ],
+
 ];
